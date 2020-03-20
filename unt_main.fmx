@@ -1,0 +1,81 @@
+object frm_cards: Tfrm_cards
+  Left = 0
+  Top = 0
+  ClientHeight = 640
+  ClientWidth = 360
+  Position = DesktopCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object VertScrollBox1: TVertScrollBox
+    Align = Center
+    EnableDragHighlight = False
+    HelpType = htKeyword
+    Size.Width = 288.000000000000000000
+    Size.Height = 522.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'scrollboxstyle'
+    TabOrder = 0
+    Viewport.Width = 288.000000000000000000
+    Viewport.Height = 522.000000000000000000
+  end
+  object ToolBar1: TToolBar
+    Size.Width = 360.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object btn_refresh: TSpeedButton
+      Align = Center
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'refreshtoolbutton'
+    end
+  end
+  object conxexao_local: TFDConnection
+    Params.Strings = (
+      
+        'Database=D:\Documentos\Embarcadero Projects\Projetos de Teste\ca' +
+        'rds\base\base.db'
+      'OpenMode=ReadWrite'
+      'DriverID=SQLite')
+    Connected = True
+    LoginPrompt = False
+    Left = 240
+    Top = 512
+  end
+  object fdq_base: TFDQuery
+    Connection = conxexao_local
+    SQL.Strings = (
+      'select * from filmes')
+    Left = 240
+    Top = 448
+    object fdq_basecod: TFDAutoIncField
+      FieldName = 'cod'
+      Origin = 'cod'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object fdq_basenome: TWideMemoField
+      FieldName = 'nome'
+      Origin = 'nome'
+      BlobType = ftWideMemo
+    end
+    object fdq_basedescricao: TWideMemoField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      BlobType = ftWideMemo
+    end
+    object fdq_baseano: TWideMemoField
+      FieldName = 'ano'
+      Origin = 'ano'
+      BlobType = ftWideMemo
+    end
+    object fdq_basecapa: TBlobField
+      FieldName = 'capa'
+      Origin = 'capa'
+    end
+  end
+end
